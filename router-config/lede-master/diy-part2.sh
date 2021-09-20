@@ -20,6 +20,11 @@ sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/auto
 # Set DISTRIB_REVISION
 sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
+# Set default language and time zone
+sed -i 's/luci.main.lang=zh_cn/luci.main.lang=auto/g' package/default-settings/files/zzz-default-settings
+sed -i 's/zonename=Asia\/Shanghai/zonename=Asia\/Jakarta/g' package/default-settings/files/zzz-default-settings
+
+
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.31.4）
 # sed -i 's/192.168.1.1/192.168.31.4/g' package/base-files/files/bin/config_generate
 
@@ -42,15 +47,8 @@ popd
 mkdir package/community
 pushd package/community
 
-# Add Lienol's Packages
-git clone --depth=1 https://github.com/Lienol/openwrt-package
-rm -rf ../lean/luci-app-kodexplorer
-
 # Add luci-app-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
-
-# Add luci-app-bypass
-git clone --depth=1 https://github.com/kiddin9/openwrt-bypass
 
 # Add OpenClash
 git clone --depth=1 -b master https://github.com/vernesong/OpenClash
