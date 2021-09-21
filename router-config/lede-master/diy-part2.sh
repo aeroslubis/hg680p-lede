@@ -21,8 +21,11 @@ sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/auto
 sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
 # Set default language and time zone
-sed -i 's/luci.main.lang=zh_cn/luci.main.lang=auto/g' package/default-settings/files/zzz-default-settings
-sed -i 's/zonename=Asia\/Shanghai/zonename=Asia\/Jakarta/g' package/default-settings/files/zzz-default-settings
+pushd package/lean/default-settings/files
+sed -i "s/zh_cn/auto/g" zzz-default-settings
+sed -i "s/uci set system.@system[0].timezone=CST-8/uci set system.@system[0].hostname=HG680P\nuci set system.@system[0].timezone=WIB-7/g" zzz-default-settings
+sed -i "s/Shanghai/Jakarta/g" zzz-default-settings
+popd
 
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.31.4）
