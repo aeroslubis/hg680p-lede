@@ -92,6 +92,9 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-opentomato k
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-opentomcat kenzok8/luci-theme-opentomcat
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-opentopd kenzok8/luci-theme-opentopd
 
+# Add domoticz
+svn co https://github.com/openwrt/packages/trunk/utils/domoticz
+
 popd
 
 # Apply patch
