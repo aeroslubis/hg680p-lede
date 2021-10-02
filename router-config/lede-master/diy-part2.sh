@@ -22,7 +22,7 @@ sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package
 
 # Set default language and time zone
 pushd package/lean/default-settings/files
-sed -i "s/zh_cn/auto/g" zzz-default-settings
+sed -i "s/zh_cn/en/g" zzz-default-settings
 sed -i "s/uci set system.@system[0].timezone=CST-8/uci set system.@system[0].hostname=HG680P\nuci set system.@system[0].timezone=WIB-7/g" zzz-default-settings
 sed -i "s/Shanghai/Jakarta/g" zzz-default-settings
 popd
