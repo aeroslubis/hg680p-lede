@@ -86,6 +86,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+        $GITHUB_WORKSPACE/script/preset-clash-core.sh armv8
 
     - name: Download package
       id: package
