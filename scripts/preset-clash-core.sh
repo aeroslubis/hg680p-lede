@@ -9,7 +9,7 @@
 # Blog: https://mlapp.cn
 #=================================================
 
-clash_core_path="/amlogic-s9xxx/common-files/files/etc/openclash/core"
+clash_core_path="$(pwd)/amlogic-s9xxx/common-files/files/etc/openclash/core"
 
 mkdir -p $clash_core_path
 
