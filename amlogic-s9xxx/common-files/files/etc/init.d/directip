@@ -1,0 +1,23 @@
+#!/bin/sh /etc/rc.common
+# Example script
+# Copyright (C) 2007 OpenWrt.org
+
+START=21
+STOP=15
+
+start() {
+    echo "Dial UP modem"
+    USE_AUTH=0 USE_APN="aha" comgt -d /dev/ttyUSB2 -s /etc/gcom/directip.gcom
+}
+
+stop() {
+    echo "Dial DOWN modem"
+    comgt -d /dev/ttyUSB2 -s /etc/gcom/directip-stop.gcom
+}
+
+restart() {
+    echo "Restarting modem"
+    stop
+    sleep 10
+    start
+}

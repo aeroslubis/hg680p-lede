@@ -9,7 +9,7 @@
 # ------------------------------- Main source started -------------------------------
 #
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-material）
-sed -i 's/luci-theme-bootstrap/luci-theme-material/g' ./feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-opentomato/g' ./feeds/luci/collections/luci/Makefile
 
 # Modify some code adaptation
 # sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
@@ -22,11 +22,10 @@ sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package
 
 # Set default language and time zone
 pushd package/lean/default-settings/files
-sed -i "s/zh_cn/en/g" zzz-default-settings
+sed -i "s/zh_cn/auto/g" zzz-default-settings
 sed -i "s/uci set system.@system[0].timezone=CST-8/uci set system.@system[0].hostname=HG680P\nuci set system.@system[0].timezone=WIB-7/g" zzz-default-settings
 sed -i "s/Shanghai/Jakarta/g" zzz-default-settings
 popd
-
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.31.4）
 # sed -i 's/192.168.1.1/192.168.31.4/g' package/base-files/files/bin/config_generate
@@ -56,33 +55,15 @@ git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
 # Add OpenClash
 git clone --depth=1 -b master https://github.com/vernesong/OpenClash
 
-# Add luci-app-wrtbwmon
-svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-wrtbwmon
-svn co https://github.com/sirpdboy/sirpdboy-package/trunk/wrtbwmon
-rm -rf ../lean/luci-app-wrtbwmon
-
 # Add luci-theme-argon
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
 rm -rf ../lean/luci-theme-argon
 
-# Add modeminfo
-git clone --depth=1 https://github.com/koshev-msk/luci-app-modeminfo
-
-# Add luci-app-smstools3
-git clone --depth=1 https://github.com/koshev-msk/luci-app-smstools3
-
-# Add luci-app-mmconfig : configure modem cellular bands via mmcli utility
-git clone --depth=1 https://github.com/koshev-msk/luci-app-mmconfig
-
-# Add 3ginfo, luci-app-3ginfo
-git clone --depth=1 https://github.com/4IceG/luci-app-3ginfo
-
-# Add luci-app-sms-tool
-git clone --depth=1 https://github.com/4IceG/luci-app-sms-tool
-
-# Add luci-app-atinout-mod
-git clone --depth=1 https://github.com/4IceG/luci-app-atinout-mod
+# Add luci-app-dockerman
+rm -rf ../lean/luci-app-docker
+git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
+git clone --depth=1 https://github.com/lisaac/luci-lib-docker
 
 # Add themes from kenzok8 openwrt-packages
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-atmaterial_new kenzok8/luci-theme-atmaterial_new
@@ -93,9 +74,5 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-opentomcat k
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-opentopd kenzok8/luci-theme-opentopd
 
 popd
-
-# Apply patch
-# git apply ../router-config/patches/{0001*,0002*}.patch --directory=feeds/luci
-#
 # ------------------------------- Other ends -------------------------------
 

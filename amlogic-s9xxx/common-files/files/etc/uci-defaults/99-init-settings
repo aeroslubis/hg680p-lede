@@ -1,0 +1,41 @@
+#!/bin/bash
+#=================================================
+# File name: init-settings.sh
+# Description: This script will be executed during the first boot
+# Author: SuLingGG
+# Author: helmiau
+# Blog: https://mlapp.cn
+#=================================================
+#--------------------------------------------------------
+#   If you use some codes frome here, please give credit to www.helmiau.com
+#--------------------------------------------------------
+
+# Disable autostart by default for some packages
+rm -f /etc/rc.d/S98udptools || true
+rm -f /etc/rc.d/S99dockerd || true
+rm -f /etc/rc.d/S99dockerman || true
+rm -f /etc/rc.d/S30stubby || true
+rm -f /etc/rc.d/S90stunnel || true
+
+# Enable auto start
+/etc/init.d/directip enable
+
+# Disable opkg signature check
+sed -i 's/option check_signature/# option check_signature/g' /etc/opkg.conf
+
+# Set hostname to HG680P
+uci set system.@system[0].hostname='HG680P'
+
+# Set Timezone to Asia/Jakarta
+uci set system.@system[0].timezone='WIB-7'
+uci set system.@system[0].zonename='Asia/Jakarta'
+uci commit system
+
+# Set default theme to opentomato
+uci set luci.main.mediaurlbase='/luci-static/opentomato'
+uci commit luci
+
+# Bye-bye zh_cn
+opkg remove $(opkg list-installed | grep zh-cn)
+
+exit 0
