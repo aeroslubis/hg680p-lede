@@ -31,8 +31,8 @@ uci set system.@system[0].timezone='WIB-7'
 uci set system.@system[0].zonename='Asia/Jakarta'
 uci commit system
 
-# Set default theme to opentomato
-uci set luci.main.mediaurlbase='/luci-static/opentomato'
+# Set default theme to argon
+uci set luci.main.mediaurlbase='/luci-static/argon'
 uci commit luci
 
 # Bye-bye zh_cn
