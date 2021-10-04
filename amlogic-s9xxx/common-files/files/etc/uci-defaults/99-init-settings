@@ -29,11 +29,20 @@ uci set system.@system[0].hostname='HG680P'
 # Set Timezone to Asia/Jakarta
 uci set system.@system[0].timezone='WIB-7'
 uci set system.@system[0].zonename='Asia/Jakarta'
+
+# Set ntp servers
+uci set system.ntp=timeserver
+uci set system.ntp.server='0.openwrt.pool.ntp.org' '1.openwrt.pool.ntp.org' '2.openwrt.pool.ntp.org' '3.openwrt.pool.ntp.org'
+uci set system.ntp.enabled='1'
+uci set system.ntp.enable_server='1'
+
 uci commit system
 
 # Set default theme to argon
 uci set luci.main.mediaurlbase='/luci-static/argon'
 uci commit luci
+'
+
 
 # Bye-bye zh_cn
 opkg remove $(opkg list-installed | grep zh-cn)

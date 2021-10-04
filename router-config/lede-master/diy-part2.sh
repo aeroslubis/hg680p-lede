@@ -60,6 +60,24 @@ git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
 rm -rf ../lean/luci-theme-argon
 
+# Add modeminfo
+git clone --depth=1 https://github.com/koshev-msk/luci-app-modeminfo
+
+# Add luci-app-smstools3
+git clone --depth=1 https://github.com/koshev-msk/luci-app-smstools3
+
+# Add luci-app-mmconfig : configure modem cellular bands via mmcli utility
+git clone --depth=1 https://github.com/koshev-msk/luci-app-mmconfig
+
+# Add 3ginfo, luci-app-3ginfo
+git clone --depth=1 https://github.com/4IceG/luci-app-3ginfo
+
+# Add luci-app-sms-tool
+git clone --depth=1 https://github.com/4IceG/luci-app-sms-tool
+
+# Add luci-app-atinout-mod
+git clone --depth=1 https://github.com/4IceG/luci-app-atinout-mod
+
 # Add luci-app-dockerman
 rm -rf ../lean/luci-app-docker
 git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
