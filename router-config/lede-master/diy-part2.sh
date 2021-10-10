@@ -9,7 +9,7 @@
 # ------------------------------- Main source started -------------------------------
 #
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-material）
-sed -i 's/luci-theme-bootstrap/luci-theme-opentomato/g' ./feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
 
 # Modify some code adaptation
 # sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
@@ -92,5 +92,8 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-opentomcat k
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-opentopd kenzok8/luci-theme-opentopd
 
 popd
+
+# Add rtl8189 wireless driver
+git clone https://github.com/rootjack404/rtl8189fs package/kernel/
 # ------------------------------- Other ends -------------------------------
 
