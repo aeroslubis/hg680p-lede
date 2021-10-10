@@ -94,6 +94,8 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-opentopd ken
 popd
 
 # Add rtl8189 wireless driver
-git clone https://github.com/rootjack404/rtl8189fs package/kernel/
+pushd package/kernel
+git clone --depth=1 https://github.com/rootjack404/rtl8189fs
+popd
 # ------------------------------- Other ends -------------------------------
 
