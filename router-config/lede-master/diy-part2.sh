@@ -60,28 +60,16 @@ git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
 rm -rf ../lean/luci-theme-argon
 
-# Add modeminfo
-git clone --depth=1 https://github.com/koshev-msk/luci-app-modeminfo
-
-# Add luci-app-smstools3
-git clone --depth=1 https://github.com/koshev-msk/luci-app-smstools3
-
-# Add luci-app-mmconfig : configure modem cellular bands via mmcli utility
-git clone --depth=1 https://github.com/koshev-msk/luci-app-mmconfig
-
-# Add 3ginfo, luci-app-3ginfo
-git clone --depth=1 https://github.com/4IceG/luci-app-3ginfo
-
-# Add luci-app-sms-tool
-git clone --depth=1 https://github.com/4IceG/luci-app-sms-tool
-
-# Add luci-app-atinout-mod
-git clone --depth=1 https://github.com/4IceG/luci-app-atinout-mod
-
 # Add luci-app-dockerman
 rm -rf ../lean/luci-app-docker
 git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
 git clone --depth=1 https://github.com/lisaac/luci-lib-docker
+
+# Add luci-app-smartdns
+svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-smartdns luci-app-smartdns
+
+# Add luci-app-banip
+svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-banip luci-app-banip
 
 # Add themes from kenzok8 openwrt-packages
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-atmaterial_new kenzok8/luci-theme-atmaterial_new
