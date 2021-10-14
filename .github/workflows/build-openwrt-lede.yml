@@ -16,7 +16,7 @@ on:
         required: false
         default: 'false'
   schedule:
-    - cron: '0 17 * * 0'
+#    - cron: '0 17 * * 0'
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -25,9 +25,9 @@ env:
   CONFIG_FILE: router-config/lede-master/.config
   DIY_P1_SH: router-config/lede-master/diy-part1.sh
   DIY_P2_SH: router-config/lede-master/diy-part2.sh
-  UPLOAD_BIN_DIR: true
-  UPLOAD_ARMVIRT: true
-  UPLOAD_FIRMWARE: true
+  UPLOAD_BIN_DIR: false
+  UPLOAD_ARMVIRT: false
+  UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
   DELETE_RELEASE: true
   DELETE_ARTIFACTS: true
@@ -63,6 +63,12 @@ jobs:
         df -hT $PWD
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+
+    - name: Set cache
+      uses: klever1988/cachewrtbuild@main
+      with:
+        ccache: 'true'
+        prefix: $GITHUB_WORKSPACE/openwrt
 
     - name: Load custom feeds
       run: |
