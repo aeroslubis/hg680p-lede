@@ -22,7 +22,7 @@ sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package
 
 # Set default language and time zone
 pushd package/lean/default-settings/files
-sed -i "s/zh_cn/auto/g" zzz-default-settings
+sed -i "s/zh_cn/en/g" zzz-default-settings
 sed -i "s/uci set system.@system[0].timezone=CST-8/uci set system.@system[0].hostname=HG680P\nuci set system.@system[0].timezone=WIB-7/g" zzz-default-settings
 sed -i "s/Shanghai/Jakarta/g" zzz-default-settings
 popd
@@ -64,12 +64,6 @@ rm -rf ../lean/luci-theme-argon
 rm -rf ../lean/luci-app-docker
 git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
 git clone --depth=1 https://github.com/lisaac/luci-lib-docker
-
-# Add luci-app-smartdns
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-smartdns luci-app-smartdns
-
-# Add luci-app-banip
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-banip luci-app-banip
 
 # Add themes from kenzok8 openwrt-packages
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-atmaterial_new kenzok8/luci-theme-atmaterial_new
