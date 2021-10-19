@@ -38,7 +38,7 @@ uci commit system
 # Set default theme to argon
 uci set luci.main.mediaurlbase='/luci-static/argon'
 # Set language to english
-uci set luci.main.lang='us'
+uci set luci.main.lang='en'
 uci commit luci
 
 # Set wwan0 and usb0 zone
