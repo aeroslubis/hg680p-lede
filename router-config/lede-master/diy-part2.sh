@@ -73,6 +73,9 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-opentomato k
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-opentomcat kenzok8/luci-theme-opentomcat
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-opentopd kenzok8/luci-theme-opentopd
 
+# Add tailscale package
+git clone -b master --depth 1 https://github.com/MoZhonghua/openwrt-tailscale tailscale
+
 popd
 
 # Add rtl8189 wireless driver
