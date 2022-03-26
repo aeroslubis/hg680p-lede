@@ -78,9 +78,5 @@ git clone -b master --depth 1 https://github.com/MoZhonghua/openwrt-tailscale ta
 
 popd
 
-# Add rtl8189 wireless driver
-pushd package/kernel
-git clone --depth=1 https://github.com/rootjack404/rtl8189fs
-popd
 # ------------------------------- Other ends -------------------------------
 
